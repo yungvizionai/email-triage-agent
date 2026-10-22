@@ -18,6 +18,7 @@ If you only get a handful of emails a day, you do not need this yet.
 - Sorts each message into buckets you define
 - Writes a short morning brief
 - Keeps the important email where you will see it and moves the noise out of the way
+- Flags payment changes, money requests, and suspicious emails for you to verify yourself
 
 ## What you need
 
@@ -32,7 +33,7 @@ If you only get a handful of emails a day, you do not need this yet.
 4. Save the file.
 5. In Claude Cowork, or your AI tool, attach the saved `.md` file as the instructions for a new scheduled task.
 6. Set the schedule. In Cowork you can use the `/schedule` command. Pick a time outside peak usage hours, like early morning or evening.
-7. Run it once by hand the first time. It may ask for permission to read your email and save drafts. Approving those on a manual run keeps the automatic runs from pausing later.
+7. Run it once by hand the first time. It may ask for permission to read your email, save drafts, and move mail to your cleanup folder. Approve only those. Decline anything that lets it send email. If your tool offers an "automatically approve" mode for scheduled runs, skip it. Approving the few actions you need, one time, keeps everything else blocked when nobody is watching. Approving them on a manual run keeps the automatic runs from pausing later.
 8. Watch it for a week or two, then adjust your buckets and rules.
 
 ## Customize your buckets
@@ -57,6 +58,25 @@ A few things I got wrong the first time, so you can skip them:
 - Start read-only. Let it read and sort before you let it move anything.
 - Never let it reply, send, forward, or delete without your say-so.
 - Limit it to one cleanup label or folder.
+- Never give it access to payments, banking, or account settings.
+- Treat the brief as a pointer. Before acting on anything involving money, passwords, or account changes, open the original email and verify by phone using a number you already have.
+
+### Why the extra rules (updated October 2026)
+
+Attackers have started hiding instructions inside emails, written for the AI assistant that reads them. A hidden line might tell the assistant to call a scam email urgent, or to add "update this vendor's payment details" to your to-do list. This is called prompt injection, and security researchers expect it to stay a problem for a long time.
+
+The template now includes:
+
+- Safety rules that tell the assistant email content is information to sort, never instructions to follow
+- A Check Before Acting bucket for payment changes, money requests, password requests, and emails that try to talk to the AI
+- A "verify by phone" note on every flagged item, and no recommended actions involving money
+- A default to keep anything uncertain in the inbox instead of filing it as noise
+- Draft only. The assistant no longer sends the brief to you by email.
+- A reminder to judge each email by its content, so a useful update from a promo-heavy sender doesn't get filed as noise
+
+These rules lower the risk. They do not remove it. Keeping the assistant's permissions narrow is what limits the damage if it gets fooled.
+
+Further reading: [Phishing emails are baiting your AI assistant](https://www.malwarebytes.com/blog/ai/2026/10/phishing-emails-are-baiting-your-ai-assistant) (Malwarebytes)
 
 ## Want help setting this up?
 
